@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Student Means JSF</title>
+        <h:outputStylesheet library="css" name="style.css"  />
+    </h:head>
+    <h:body >
+        <div class="my-container">
+        <a style="font-size: 36px; color: white">Students Means:</a> 
+        
+
+        <h:form>                 
+            
+            <h:dataTable value="#{CompteBean.getStudentList()}" var="o"
+    			styleClass="order-table"
+    			headerClass="order-table-header"
+    			rowClasses="order-table-row"
+                        
+                        >
+
+    			<h:column>
+    				<!-- column header -->
+    				<f:facet name="header">Name</f:facet>
+    				<!-- row record -->
+    				#{o.name}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Roll No</f:facet>
+    				#{o.rollNo}
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Mean</f:facet>
+    				#{o.moyenne}
+                                
+    			</h:column>
+
+    			<h:column>
+    				<f:facet name="header">Link To Chart</f:facet>
+                                <h:commandLink  value="click here to download chart" action="#{o.pdf()}" style="text-decoration:none;color:white"/>
+    			</h:column>
+                
+
+    		</h:dataTable>
+                
+            
+        </h:form>
+        
+        </div>
+    </h:body>
+</html>
+

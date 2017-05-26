@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e91ff6fb-30cb-4007-ae31-1cf1499e9f44">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<subDataset name="ChartDataset" uuid="212ae05f-8b74-4ecd-b398-ab2c92c9bcba">
+		<field name="name" class="java.lang.String"/>
+		<field name="mark" class="java.lang.Double"/>
+	</subDataset>
+	<field name="name" class="java.lang.String"/>
+	<field name="rollNo" class="java.lang.String"/>
+	<field name="imagePath" class="java.lang.String"/>
+	<field name="listOfSemesterPaper" class="java.util.List"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="27" width="555" height="52" uuid="569f63f8-eaf5-407b-b9fc-19ab8de1da1b"/>
+				<textElement textAlignment="Center">
+					<font size="30"/>
+				</textElement>
+				<text><![CDATA[Progress Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="389" splitType="Stretch">
+			<image>
+				<reportElement x="376" y="0" width="179" height="151" uuid="e2b9d8d6-7997-49a0-8891-6b26c42b7fe0"/>
+				<imageExpression><![CDATA[$F{imagePath}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="58" y="38" width="100" height="20" uuid="1222e310-b950-4f82-8d44-4c3642221e5d"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Name :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="58" y="71" width="100" height="20" uuid="1e035cf1-2a36-4324-b696-136874baafc5"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Roll No :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="158" y="38" width="207" height="20" uuid="399198dc-2834-4ba5-83d0-a25e3c9ebed3"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="71" width="207" height="20" uuid="7635bc64-7f5e-411d-865e-1ef94e0212f9"/>
+				<textElement>
+					<font size="13"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rollNo}]]></textFieldExpression>
+			</textField>
+			<barChart>
+				<chart>
+					<reportElement x="58" y="151" width="432" height="238" uuid="d82252d6-3348-433f-9c1e-30e41ef981e6"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset>
+						<datasetRun subDataset="ChartDataset" uuid="57dd8ffd-17a6-4254-88a3-4e8306c4c5fe">
+							<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{listOfSemesterPaper})]]></dataSourceExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{name}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{mark}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
